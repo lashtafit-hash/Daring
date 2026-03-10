@@ -1050,12 +1050,7 @@ display:none;
 
     statusEl.style.display = 'none';
 
-    alert(
-      "Заявка отправлена!\n\n" +
-      "Мы получили вашу анкету.\n" +
-      "После рассмотрения напишем вам в Instagram.\n\n" +
-      "Подпишитесь на @daring.smm чтобы не пропустить сообщение."
-    );
+    document.getElementById("successModal").classList.add("active");;
 
     form.reset();
 
