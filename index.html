@@ -18,7 +18,6 @@
       --text: rgba(255,255,255,0.94);
       --muted: rgba(255,255,255,0.62);
       --border: rgba(199,134,154,0.2);
-      --ENDPOINT: "https://script.google.com/macros/s/AKfycbw2mPpHmScRCGsL3GNj4nBPpMr_5t4bZAi3oLdJ-v4ziJ2rp4X8luHPpnU1wGOjCa1drQ/exec";
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -633,7 +632,7 @@ display:none;
 }
 
 }
-    }
+
     .success-modal {
   position: fixed;
   inset: 0;
@@ -1002,6 +1001,26 @@ display:none;
 
   </div><!-- /page-focus -->
 
+  <div class="success-modal" id="successModal">
+  <div class="success-box">
+    <button class="success-close" type="button" id="successClose">&times;</button>
+    <div class="success-title">Заявка отправлена</div>
+    <div class="success-text">
+      Мы получили вашу анкету и рассмотрим её в ближайшее время.
+    </div>
+    <div class="success-note">
+      Подпишитесь на <strong style="color: var(--rose-2);">@daring.smm</strong>, 
+      чтобы не пропустить сообщение и обновления.
+    </div>
+    <div class="success-actions">
+      <a href="https://instagram.com/daring.smm" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Перейти в Instagram
+      </a>
+    </div>
+  </div>
+</div>
+
+
   <script>
     // ─── PAGE SWITCHING ───
     function showPage(name) {
@@ -1031,70 +1050,43 @@ display:none;
     // ─── FORM ───
     const form = document.getElementById('focusForm');
     const statusEl = document.getElementById('status');
+    const successModal = document.getElementById('successModal');
+    const successClose = document.getElementById('successClose');
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbw2mPpHmScRCGsL3GNj4nBPpMr_5t4bZAi3oLdJ-v4ziJ2rp4X8luHPpnU1wGOjCa1drQ/exec";
 
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_submit_frame';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
 
-    form.setAttribute('action', ENDPOINT);
-    form.setAttribute('target', 'hidden_submit_frame');
+      statusEl.style.display = 'block';
+      statusEl.textContent = 'Отправляем…';
 
-    form.addEventListener('submit', function(e) {
-  e.preventDefault();
+      const formData = new FormData(form);
 
-  statusEl.style.display = 'block';
-  statusEl.textContent = 'Отправляем…';
+      try {
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        });
 
-  const formData = new FormData(form);
+        statusEl.style.display = 'none';
+        successModal.classList.add('active');
+        form.reset();
+      } catch (error) {
+        statusEl.textContent = 'Ошибка отправки. Попробуйте снова.';
+      }
+    });
 
-  fetch(form.action, {
-    method: 'POST',
-    body: formData
-  })
-  .then(() => {
+    successClose.addEventListener('click', () => {
+      successModal.classList.remove('active');
+    });
 
-    statusEl.style.display = 'none';
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.remove('active');
+      }
+    });
 
-    document.getElementById("successModal").classList.add("active");
-
-    form.reset();
-
-  })
-  .catch(() => {
-    statusEl.textContent = 'Ошибка отправки. Попробуйте снова.';
-  });
-
-});
-  document.getElementById("successClose").addEventListener("click", () => {
-  document.getElementById("successModal").classList.remove("active");
-});
-
-document.getElementById("successModal").addEventListener("click", (e) => {
-  if (e.target.id === "successModal") {
-    document.getElementById("successModal").classList.remove("active");
-  }
-});  
-     
   </script>
-  <div class="success-modal" id="successModal">
-  <div class="success-box">
-    <button class="success-close" type="button" id="successClose">&times;</button>
-    <div class="success-title">Заявка отправлена</div>
-    <div class="success-text">
-      Мы получили вашу анкету и рассмотрим её в ближайшее время.
-    </div>
-    <div class="success-note">
-      Подпишитесь на <strong style="color: var(--rose-2);">@daring.smm</strong>, 
-      чтобы не пропустить сообщение и обновления.
-    </div>
-    <div class="success-actions">
-      <a href="https://instagram.com/daring.smm" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        Перейти в Instagram
-      </a>
-    </div>
-  </div>
-</div>
 </body>
 </html>
