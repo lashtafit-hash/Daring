@@ -1041,22 +1041,41 @@ display:none;
     form.setAttribute('action', ENDPOINT);
     form.setAttribute('target', 'hidden_submit_frame');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
   statusEl.style.display = 'block';
   statusEl.textContent = 'Отправляем…';
 
-  setTimeout(() => {
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: formData
+  })
+  .then(() => {
 
     statusEl.style.display = 'none';
 
-    document.getElementById("successModal").classList.add("active");;
+    document.getElementById("successModal").classList.add("active");
 
     form.reset();
 
-  }, 1200);
+  })
+  .catch(() => {
+    statusEl.textContent = 'Ошибка отправки. Попробуйте снова.';
+  });
 
 });
+  document.getElementById("successClose").addEventListener("click", () => {
+  document.getElementById("successModal").classList.remove("active");
+});
+
+document.getElementById("successModal").addEventListener("click", (e) => {
+  if (e.target.id === "successModal") {
+    document.getElementById("successModal").classList.remove("active");
+  }
+});  
      
   </script>
   <div class="success-modal" id="successModal">
