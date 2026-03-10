@@ -578,15 +578,61 @@
       .container { padding: 0 24px; }
     }
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hero-title { font-size: 42px; }
-      .hero-title .big-line { font-size: 60px; }
-      .focus-title { font-size: 48px; }
-      .form-panel, .info-panel { padding: 32px 24px; }
-      .services .service-row { grid-template-columns: 40px 1fr; }
-      .service-desc { display: none; }
-      .stat-row { gap: 24px; }
-      .why-grid { grid-template-columns: 1fr; }
+
+.hero{
+display:block;
+}
+
+.hero-photo{
+height:58vh;
+min-height:380px;
+max-height:520px;
+}
+
+.hero-photo img{
+object-fit:cover;
+object-position:center top;
+}
+
+.hero-content{
+padding:28px 20px 40px;
+margin-top:-20px;
+}
+
+.hero-title{
+font-size:34px;
+line-height:0.95;
+}
+
+.hero-title .big-line{
+font-size:56px;
+}
+
+.hero-sub{
+font-size:13px;
+line-height:1.7;
+}
+
+.hero-cta-row{
+flex-direction:column;
+gap:12px;
+}
+
+.btn-primary,
+.btn-ghost{
+width:100%;
+justify-content:center;
+}
+
+.vert-text{
+display:none;
+}
+
+.hero-badges{
+display:none;
+}
+
+}
     }
   </style>
 </head>
