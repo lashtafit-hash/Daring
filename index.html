@@ -700,8 +700,196 @@ display:none;
   display: flex;
   justify-content: center;
 }
+
+    /* ─── PAGE 3: PRICE ─── */
+    .price-eyebrow {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .price-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--rose); }
+
+    .price-hero {
+      position: relative; min-height: 44vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 160px 48px 80px;
+      overflow: hidden;
+    }
+    .price-hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 400px at 50% 0%, rgba(199,134,154,0.16), transparent 55%),
+        radial-gradient(ellipse 500px 500px at 10% 80%, rgba(199,134,154,0.06), transparent 60%);
+    }
+    .price-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(199,134,154,0.3) 30%, rgba(199,134,154,0.3) 70%, transparent);
+    }
+    .price-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 6vw, 84px); font-weight: 300; line-height: 0.95;
+      letter-spacing: -1px; margin-bottom: 20px;
+    }
+    .price-h1 em { font-style: italic; color: var(--rose-2); }
+    .price-lead {
+      font-size: 13px; line-height: 1.9; color: var(--muted);
+      max-width: 44ch; margin: 0 auto; letter-spacing: 0.3px;
+    }
+
+    .price-section { padding: 90px 0 120px; }
+
+    .price-cat {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 32px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .price-cat::after { content: ''; flex: 1; height: 1px; background: rgba(199,134,154,0.2); }
+
+    /* ── Me Code card ── */
+    .mc-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(199,134,154,0.22);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+      margin-bottom: 64px;
+    }
+    .mc-card:hover { border-color: rgba(199,134,154,0.42); }
+    .mc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--rose-dark), var(--rose-2), var(--gold), transparent);
+    }
+    .mc-left {
+      padding: 52px 52px; background: rgba(255,255,255,0.02);
+      position: relative; overflow: hidden;
+    }
+    .mc-left::after {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,134,154,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .mc-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border: 1px solid rgba(199,134,154,0.35); border-radius: 999px;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--rose); background: rgba(199,134,154,0.06); margin-bottom: 24px;
+    }
+    .mc-pill::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--rose); animation: pulse 2s ease-in-out infinite;
+    }
+    .mc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 50px; font-weight: 300; line-height: 1; letter-spacing: -1px; margin-bottom: 4px;
+    }
+    .mc-name span { color: var(--rose-2); font-style: italic; }
+    .mc-tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .mc-price-row { display: flex; align-items: flex-end; gap: 6px; margin-bottom: 6px; }
+    .mc-price {
+      font-family: 'Cormorant Garamond', serif; font-size: 66px; font-weight: 600; line-height: 1;
+      background: linear-gradient(135deg, #fff 30%, var(--rose-2) 70%, var(--rose) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .mc-cur {
+      font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300;
+      color: var(--muted); padding-bottom: 10px;
+    }
+    .mc-period { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 36px; }
+    .mc-right {
+      padding: 52px 52px; border-left: 1px solid rgba(199,134,154,0.12);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .mc-feat { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mc-feat:last-child { border-bottom: none; }
+    .mc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); flex-shrink: 0; margin-top: 7px; }
+    .mc-feat-title { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+    .mc-feat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Custom card ── */
+    .cu-card {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(212,184,150,0.2);
+      position: relative; overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .cu-card:hover { border-color: rgba(212,184,150,0.38); }
+    .cu-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), rgba(212,184,150,0.3), transparent);
+    }
+    .cu-left {
+      padding: 52px 52px; background: rgba(212,184,150,0.02);
+      position: relative; overflow: hidden;
+    }
+    .cu-left::after {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,184,150,0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .cu-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border: 1px solid rgba(212,184,150,0.35); border-radius: 999px;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); background: rgba(212,184,150,0.05); margin-bottom: 24px;
+    }
+    .cu-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 300; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 4px;
+    }
+    .cu-name span { color: var(--gold); font-style: italic; }
+    .cu-tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .cu-from { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .cu-price-row { display: flex; align-items: flex-end; gap: 6px; margin-bottom: 6px; }
+    .cu-price {
+      font-family: 'Cormorant Garamond', serif; font-size: 58px; font-weight: 600; line-height: 1;
+      background: linear-gradient(135deg, #fff 20%, var(--gold) 60%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cu-cur {
+      font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300;
+      color: var(--muted); padding-bottom: 8px;
+    }
+    .cu-period { font-size: 11px; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 36px; line-height: 1.7; }
+    .cu-cta {
+      display: inline-block; padding: 14px 32px;
+      background: linear-gradient(135deg, rgba(212,184,150,0.18), rgba(212,184,150,0.06));
+      border: 1px solid rgba(212,184,150,0.45); color: var(--gold);
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none;
+      border-radius: 2px; transition: all 0.4s;
+    }
+    .cu-cta:hover {
+      background: linear-gradient(135deg, rgba(212,184,150,0.3), rgba(212,184,150,0.12));
+      border-color: var(--gold); color: #fff;
+      box-shadow: 0 0 36px rgba(212,184,150,0.14); transform: translateY(-2px);
+    }
+    .cu-right {
+      padding: 52px 52px; border-left: 1px solid rgba(212,184,150,0.1);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .cu-feat { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .cu-feat:last-child { border-bottom: none; }
+    .cu-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
+    .cu-feat-title { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.85); }
+    .cu-feat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .price-note {
+      margin-top: 52px; padding: 28px 36px;
+      border: 1px solid rgba(255,255,255,0.07); border-left: 2px solid rgba(199,134,154,0.5);
+      background: rgba(255,255,255,0.02);
+      display: flex; align-items: center; gap: 20px;
+    }
+    .price-note-icon { font-size: 18px; color: var(--rose-2); flex-shrink: 0; }
+    .price-note-text { font-size: 13px; line-height: 1.8; color: var(--muted); }
+    .price-note-text strong { color: rgba(255,255,255,0.85); }
+
+    .price-footer {
+      padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
   </style>
-</head>
 <body>
 
   <!-- ─── NAV ─── -->
@@ -710,6 +898,7 @@ display:none;
     <div class="nav-links">
       <a onclick="showPage('landing')" class="active" id="nav-landing">Главная</a>
       <a onclick="showPage('focus')" id="nav-focus">Фокус-группа</a>
+      <a onclick="showPage('price')" id="nav-price">Прайс</a>
       <a href="https://instagram.com/daring.smm" target="_blank">Instagram ↗</a>
     </div>
   </nav>
@@ -1000,6 +1189,90 @@ display:none;
     </div>
 
   </div><!-- /page-focus -->
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PAGE 3: PRICE                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="page" id="page-price">
+
+    <section class="price-hero">
+      <div class="price-hero-bg"></div>
+      <div style="position:relative;z-index:2;">
+        <div class="price-eyebrow">Прозрачное ценообразование</div>
+        <h1 class="price-h1">Инвестиции в <em>результат</em></h1>
+        <p class="price-lead">Выберите формат — подписка на готовый продукт для мастеров или кастомная разработка под онлайн-школу.</p>
+      </div>
+    </section>
+
+    <section class="price-section">
+      <div class="container">
+
+        <div class="price-cat">Me Code · Подписка для мастеров маникюра</div>
+
+        <div class="mc-card">
+          <div class="mc-left">
+            <div class="mc-pill">Для мастеров маникюра</div>
+            <div class="mc-name">Me <span>code</span></div>
+            <div class="mc-tag">AI-система генерации контента</div>
+            <div class="mc-price-row">
+              <div class="mc-price">1 290</div>
+              <div class="mc-cur">₽</div>
+            </div>
+            <div class="mc-period">в месяц · отмена в любой момент</div>
+            <a href="https://instagram.com/daring.smm" target="_blank" class="btn-primary">Подключить доступ</a>
+          </div>
+          <div class="mc-right">
+            <div class="mc-feat"><div class="mc-dot"></div><div><div class="mc-feat-title">Персонализированная контент-стратегия</div><div class="mc-feat-sub">Под ваш стиль, аудиторию и позиционирование</div></div></div>
+            <div class="mc-feat"><div class="mc-dot"></div><div><div class="mc-feat-title">Хуки, триггеры и сценарии Reels</div><div class="mc-feat-sub">Продающая структура роликов, которая ведёт к записи</div></div></div>
+            <div class="mc-feat"><div class="mc-dot"></div><div><div class="mc-feat-title">Посты, CTA и хештеги</div><div class="mc-feat-sub">Готовый контент для публикаций</div></div></div>
+            <div class="mc-feat"><div class="mc-dot"></div><div><div class="mc-feat-title">Сегментация аудитории</div><div class="mc-feat-sub">Разные сообщения для разных типов клиентов</div></div></div>
+            <div class="mc-feat"><div class="mc-dot"></div><div><div class="mc-feat-title">Ежемесячное обновление системы</div><div class="mc-feat-sub">Продукт развивается вместе с вашим бизнесом</div></div></div>
+          </div>
+        </div>
+
+        <div class="price-cat">Me Code · Кастомизация под онлайн-школу</div>
+
+        <div class="cu-card">
+          <div class="cu-left">
+            <div class="cu-pill">◈ Онлайн-школы</div>
+            <div class="cu-name">Me code <span>Custom</span></div>
+            <div class="cu-tag">Кастомизация системы под вашу школу</div>
+            <div class="cu-from">стоимость разработки от</div>
+            <div class="cu-price-row">
+              <div class="cu-price">30 000</div>
+              <div class="cu-cur">₽</div>
+            </div>
+            <div class="cu-period">Индивидуальное КП после брифинга</div>
+            <a href="https://instagram.com/daring.smm" target="_blank" class="cu-cta">Обсудить проект</a>
+          </div>
+          <div class="cu-right">
+            <div class="cu-feat"><div class="cu-dot"></div><div><div class="cu-feat-title">Адаптация под нишу и методологию школы</div><div class="cu-feat-sub">Глубокий брифинг и анализ целевой аудитории</div></div></div>
+            <div class="cu-feat"><div class="cu-dot"></div><div><div class="cu-feat-title">Разработка уникальной AI-архитектуры</div><div class="cu-feat-sub">Контент-система под специфику онлайн-образования</div></div></div>
+            <div class="cu-feat"><div class="cu-dot"></div><div><div class="cu-feat-title">Интеграция воронки продаж курсов</div><div class="cu-feat-sub">От охвата до покупки — продающие механики</div></div></div>
+            <div class="cu-feat"><div class="cu-dot"></div><div><div class="cu-feat-title">Обучение команды и передача системы</div><div class="cu-feat-sub">Онбординг и документация по использованию</div></div></div>
+            <div class="cu-feat"><div class="cu-dot"></div><div><div class="cu-feat-title">Поддержка после запуска</div><div class="cu-feat-sub">Итерации и доработки на основе первых результатов</div></div></div>
+          </div>
+        </div>
+
+        <div class="price-note">
+          <div class="price-note-icon">✦</div>
+          <div class="price-note-text">
+            <strong>Есть вопросы?</strong> Напишите в Instagram <strong style="color:var(--rose-2);">@daring.smm</strong> — подберём подходящий формат и ответим на всё.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="price-footer">
+        <div class="footer-logo">Daring · SMM</div>
+        <div class="footer-copy">Digital Marketing for Beauty in USA · 2025</div>
+        <a href="https://instagram.com/daring.smm" target="_blank" class="btn-ghost" style="font-size:11px">@daring.smm</a>
+      </div>
+    </div>
+
+  </div><!-- /page-price -->
 
   <div class="success-modal" id="successModal">
   <div class="success-box">
