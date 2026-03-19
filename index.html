@@ -631,6 +631,14 @@ display:none;
 display:none;
 }
 
+nav {
+  padding: 14px 16px;
+  flex-wrap: nowrap;
+}
+.nav-logo { font-size: 13px; letter-spacing: 2px; white-space: nowrap; }
+.nav-links { gap: 10px; flex-shrink: 0; }
+.nav-links a { font-size: 8px; letter-spacing: 0.5px; }
+
 }
 
     .success-modal {
@@ -887,6 +895,31 @@ display:none;
     .price-footer {
       padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.06);
       display: flex; align-items: center; justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+      .price-hero { padding: 120px 24px 60px; }
+      .price-h1 { font-size: 42px; }
+      .price-lead { font-size: 13px; max-width: 100%; }
+
+      .price-section { padding: 60px 0 80px; }
+
+      .mc-card { grid-template-columns: 1fr; margin-bottom: 40px; }
+      .mc-left { padding: 36px 28px; }
+      .mc-right { padding: 32px 28px; border-left: none; border-top: 1px solid rgba(199,134,154,0.12); }
+      .mc-name { font-size: 40px; }
+      .mc-price { font-size: 52px; }
+      .mc-cur { font-size: 22px; }
+
+      .cu-card { grid-template-columns: 1fr; }
+      .cu-left { padding: 36px 28px; }
+      .cu-right { padding: 32px 28px; border-left: none; border-top: 1px solid rgba(212,184,150,0.1); }
+      .cu-name { font-size: 36px; }
+      .cu-price { font-size: 46px; }
+      .cu-cur { font-size: 20px; }
+
+      .price-note { flex-direction: column; gap: 12px; padding: 24px 20px; }
+      .price-footer { flex-direction: column; gap: 16px; text-align: center; }
     }
 
   </style>
